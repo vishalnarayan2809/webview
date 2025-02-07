@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
       gap: 8px;
     }
     #corner-exit-button::before {
-      content: '\\26F6'; /* Unicode for fullscreen icon */
+      content: '\\26F6'; 
       font-size: 16px;
       color: white;
     }
@@ -137,13 +137,11 @@ class _HomePageState extends State<HomePage> {
         return;
       }
 
-      // Toggle fullscreen mode when the container is double-clicked.
+    
       container.addEventListener('dblclick', () => {
         console.log('Container double-clicked');
         toggleFullscreen();
       });
-
-      // Exit fullscreen when the corner button is clicked.
       cornerExitButton.addEventListener('click', () => {
         console.log('Exit button clicked');
         if (document.fullscreenElement) {
@@ -153,7 +151,7 @@ class _HomePageState extends State<HomePage> {
         }
       });
 
-      // Toggle fullscreen: enter if not in fullscreen, exit if already fullscreen.
+     
       function toggleFullscreen() {
         if (document.fullscreenElement) {
           document.exitFullscreen().then(() => {
@@ -172,9 +170,7 @@ class _HomePageState extends State<HomePage> {
             console.error('Failed to enter fullscreen:', err);
           });
         }
-      }
-
-      // Listen for fullscreen changes to update the exit button.
+  }
       document.addEventListener('fullscreenchange', () => {
         if (document.fullscreenElement) {
           setTimeout(() => {
@@ -185,7 +181,7 @@ class _HomePageState extends State<HomePage> {
         }
       });
       
-      // Listen for messages from Flutter to trigger fullscreen actions.
+   
       window.addEventListener('message', (event) => {
         console.log('Message received:', event.data);
         if (event.data === 'enterFullscreen' && !document.fullscreenElement) {
@@ -253,6 +249,7 @@ class _HomePageState extends State<HomePage> {
     Widget contentWidget;
 
     if (kIsWeb) {
+
       // ignore: undefined_prefixed_name
       ui.platformViewRegistry.registerViewFactory(viewType, (int viewId) {
         final html.IFrameElement element = html.IFrameElement()
